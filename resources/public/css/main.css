@@ -1,0 +1,10 @@
+#mount-target {
+  width: 100vw;
+  height: 100vh; }
+
+.output-container {
+  height: 400px;
+  width: 500px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  font-family: monospace; }
