@@ -7,10 +7,13 @@
 
 (defn component []
   (let [state (r/atom "")]
-    [:textarea {:rows        5
-                :cols        80
-                :on-change   #(reset! state (-> % .-target .-value))
-                :on-key-down (fn [e]
-                               (let [k (.-keyCode e)]
-                                 (when (= k enter)
-                                   (rf/dispatch [:send-clj @state]))))}]))
+    (r/create-class
+      {:reagent-render
+       (fn []
+         [:textarea {:rows        5
+                     :cols        80
+                     :on-change   #(reset! state (-> % .-target .-value))
+                     :on-key-down (fn [e]
+                                    (let [k (.-keyCode e)]
+                                      (when (= k enter)
+                                        (rf/dispatch [:send-clj @state]))))}])})))

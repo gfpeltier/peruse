@@ -6,7 +6,9 @@
 (defn head []
   [:head
    [:title "peruse"]
-   (include-css "css/main.css")])
+   (include-css "css/goldenlayout-base.css"
+                "css/goldenlayout-dark-theme.css"
+                "css/main.css")])
 
 (def main-page
   (html5

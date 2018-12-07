@@ -19,7 +19,8 @@
                  [com.cognitect/transit-cljs "0.8.239"]
                  [hiccup "1.0.5"]
                  [reagent "0.6.2"]
-                 [re-frame "0.9.4"]]
+                 [re-frame "0.9.4"]
+                 [cljsjs/golden-layout "1.5.9-0"]]
 
   :plugins [[lein-jsass "0.2.0"]
             [lein-cljsbuild "1.1.5"]
@@ -37,8 +38,6 @@
   :cljsbuild {:builds {:dev
                        {:source-paths ["src/cljc" "src/cljs" "env/dev/cljs"]
                         :compiler {:main          peruse.dev
-                                   :foreign-libs  [{:file     "resources/public/js/goldenlayout.js"
-                                                    :provides ["GoldenLayout"]}]
                                    :output-to     "target/cljs/public/js/app.js"
                                    :output-dir    "target/cljs/public/js/dev"
                                    ; Asset path must be this to reach compiled resources!
