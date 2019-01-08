@@ -1,6 +1,4 @@
 (ns peruse.router
-  (:require [peruse.views.index.view :as index]
-            [peruse.views.sandbox.view :as sandbox]))
+  (:require [peruse.views.index.view :as index]))
 
-(def views {:index index/component
-            :sandbox sandbox/component})
+(def views {:index index/component})

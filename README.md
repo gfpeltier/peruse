@@ -10,6 +10,6 @@ TODO: Still in development. Not yet ready for use.
 
 ## License
 
-Copyright © 2018 Grant Peltier
+Copyright © 2019 Grant Peltier
 
 Distributed under the MIT License

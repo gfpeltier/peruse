@@ -31,6 +31,12 @@
 (defn run-srv! []
   (web/run app {:host "localhost" :port 3030 :path "/"}))
 
+(defn start! []
+  (web/run app {:host "localhost" :port 3030 :path "/"}))
+
+(defn stop! []
+  (web/stop))
+
 (defn -main [& args]
   (thread (run-srv!))
   (loop [] (recur)))

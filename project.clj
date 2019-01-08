@@ -3,7 +3,7 @@
   :url "https://github.com/grantpeltier/peruse"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.10.0-RC2"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
                  [com.cognitect/transit-clj "0.8.313"]
                  [org.clojure/data.json "0.2.6"]
                  [environ "1.1.0"]
@@ -20,9 +20,10 @@
                  [hiccup "1.0.5"]
                  [reagent "0.6.2"]
                  [re-frame "0.9.4"]
-                 [cljsjs/golden-layout "1.5.9-0"]]
+                 [cljsjs/golden-layout "1.5.9-0"]
+                 [cljsjs/ace "1.4.2-0"]]
 
-  :plugins [[lein-jsass "0.2.0"]
+  :plugins [[lein-jsass "0.2.1"]
             [lein-cljsbuild "1.1.5"]
             [lein-environ "1.1.0"]]
 

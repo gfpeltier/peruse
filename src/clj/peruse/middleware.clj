@@ -1,7 +1,22 @@
 (ns peruse.middleware
   (:require [cognitect.transit :as t]
             [clojure.tools.logging :as log])
-  (:import (java.io ByteArrayInputStream ByteArrayOutputStream)))
+  (:import (java.io ByteArrayInputStream ByteArrayOutputStream)
+           (com.cognitect.transit TransitFactory WriteHandler)))
+
+(def custom-writers {clojure.lang.Var
+                     (reify WriteHandler
+                       (tag [_ _] "var")
+                       (rep [_ v] (TransitFactory/taggedValue "var" (str v)))
+                       (stringRep [_ _] nil)
+                       (getVerboseHandler [_] nil))
+
+                     java.lang.Class
+                     (reify WriteHandler
+                       (tag [_ _] "class")
+                       (rep [_ c] (TransitFactory/taggedValue "class" (str c)))
+                       (stringRep [_ _] nil)
+                       (getVerboseHandler [_] nil))})
 
 (defn decode-req-body [{:keys [body] :as req}]
   (let [in (ByteArrayInputStream. (.getBytes (slurp body)))
@@ -12,7 +27,7 @@
   (log/info resp)
   (log/info "Body:" body)
   (let [out (ByteArrayOutputStream. 4096)
-        w (t/writer out :json)
+        w (t/writer out :json {:handlers custom-writers})
         _ (t/write w body)
         nbody (.toString out)]
     (log/info "Serial body:" nbody)
